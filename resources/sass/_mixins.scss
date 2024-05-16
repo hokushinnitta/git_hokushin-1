@@ -1,0 +1,13 @@
+// Mixin for button styles
+@mixin button-styles($bg-color, $hover-color) {
+  background-color: $bg-color;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  
+  &:hover {
+    background-color: $hover-color;
+  }
+}

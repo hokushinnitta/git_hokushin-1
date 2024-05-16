@@ -4,16 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>メインMENU</title>
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
-    <div class="menu-container">
+    <div class="container">
         <h1>メインMENU</h1>
         <form action="{{ route('logout') }}" method="POST">
             @csrf
             <button type="submit">ログアウト</button>
         </form>
     </div>
-    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

@@ -1,0 +1,60 @@
+@import 'variables';
+@import 'mixins';
+
+// Base styles
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: $font-family;
+  background-color: $background-color;
+}
+
+.container {
+  text-align: center;
+}
+
+// Button styles
+button {
+  @include button-styles($primary-color, $hover-color);
+  padding: 10px 20px;
+}
+
+// Responsive styles
+// Mobile
+@media (max-width: 767px) {
+  .container {
+    width: 90%;
+  }
+
+  input, button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+// Tablet
+@media (min-width: 768px) and (max-width: 1023px) {
+  .container {
+    width: 70%;
+  }
+
+  input, button {
+    width: 80%;
+    margin-bottom: 10px;
+  }
+}
+
+// PC
+@media (min-width: 1024px) {
+  .container {
+    width: 50%;
+  }
+
+  input, button {
+    width: 60%;
+    margin-bottom: 10px;
+  }
+}

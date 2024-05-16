@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BACK MENU</title>
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
-    <div class="menu-container">
+    <div class="container">
         <h1>BACK MENU</h1>
         <form action="{{ route('goto.main') }}" method="POST">
             @csrf
@@ -18,6 +18,5 @@
             <button type="submit">ログアウト</button>
         </form>
     </div>
-    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

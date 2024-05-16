@@ -7,7 +7,7 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
-    <div class="login-container">
+    <div class="container">
         <h1>在庫管理システム</h1>
         <form action="{{ route('login') }}" method="POST">
             @csrf
