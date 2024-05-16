@@ -1,0 +1,40 @@
+// Variables
+$primary-color: #0000cd;
+$hover-color: #191970;
+$font-family: Arial, sans-serif;
+$background-color: #f0f0f0;
+
+// Mixin for button styles
+@mixin button-styles($bg-color, $hover-color) {
+  background-color: $bg-color;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  
+  &:hover {
+    background-color: $hover-color;
+  }
+}
+
+// Base styles
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: $font-family;
+  background-color: $background-color;
+}
+
+.menu-container, .login-container {
+  text-align: center;
+}
+
+// Button styles
+button {
+  @include button-styles($primary-color, $hover-color);
+  padding: 10px 20px;
+}

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>在庫管理システム - ログイン</title>
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
     <div class="login-container">
@@ -16,6 +16,5 @@
             <button type="submit">ログイン</button>
         </form>
     </div>
-    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
