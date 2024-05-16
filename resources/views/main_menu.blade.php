@@ -3,17 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BACK MENU</title>
+    <title>メインMENU</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>
     <div class="menu-container">
-        <h1>BACK MENU</h1>
-        <form action="{{ route('goto.main') }}" method="POST">
-            @csrf
-            <button type="submit">GoToMain</button>
-        </form>
-        <form action="{{ route('logout') }}" method="POST" style="margin-top: 10px;">
+        <h1>メインMENU</h1>
+        <form action="{{ route('logout') }}" method="POST">
             @csrf
             <button type="submit">ログアウト</button>
         </form>

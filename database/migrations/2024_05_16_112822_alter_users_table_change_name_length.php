@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name', 100);
-            $table->string('password', 100);
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('name', 50)->change(); // ここで長さを50文字に変更
         });
     }
 
@@ -24,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('name', 10)->change();
+        });
     }
 };
