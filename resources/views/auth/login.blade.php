@@ -7,14 +7,19 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
-    <div class="container">
-        <h1>在庫管理システム</h1>
-        <form action="{{ route('login') }}" method="POST">
-            @csrf
-            <input type="text" name="name" placeholder="名前を入力" required>
-            <input type="password" name="password" placeholder="パスワードを入力" required>
-            <button type="submit">ログイン</button>
-        </form>
-    </div>
+    <main>
+        <div class="container">
+            <h1>在庫管理システム</h1>
+            <form action="{{ route('login') }}" method="POST">
+                @csrf
+                <input type="text" name="name" placeholder="名前を入力" required>
+                <input type="password" name="password" placeholder="パスワードを入力" required>
+                <button type="submit">ログイン</button>
+            </form>
+        </div>
+        <div class="version">ver.0.01</div>
+    </main>
+    @component('components.footer', ['copyrightText' => 'Copyright © 2024 RunFree. All rights reserved.'])
+    @endcomponent
 </body>
 </html>

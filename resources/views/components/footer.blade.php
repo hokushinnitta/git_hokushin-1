@@ -1,0 +1,3 @@
+<footer>
+    {{ $copyrightText }}
+</footer>
