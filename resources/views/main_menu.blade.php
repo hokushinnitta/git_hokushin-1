@@ -7,13 +7,11 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
+    @component('components.header')
+    @endcomponent
     <main>
         <div class="container">
             <h1>メインMENU</h1>
-            <form action="{{ route('logout') }}" method="POST">
-                @csrf
-                <button type="submit">ログアウト</button>
-            </form>
         </div>
     </main>
     @component('components.footer', ['copyrightText' => 'Copyright © 2024 RunFree. All rights reserved.'])

@@ -3,11 +3,11 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;  // 追加
   height: 100vh;
   margin: 0;
   font-family: $font-family;
   background-color: $background-color;
+  padding-top: 60px; // ヘッダー高さ分のパディングを追加
 }
 
 main {
@@ -22,11 +22,15 @@ main {
 .container {
   text-align: center;
   flex-grow: 1;
-}
+  border-color: $border-color;
+  }
 
-button {
-  @include button-styles($primary-color, $hover-color);
+/// ボタンスタイルの調整
+button, .nav-btn, .logout-btn {
+  background-color: $button-color;
+  color: $button-text-color;
   padding: 10px 20px;
+  margin-top: 10px;
 }
 
 footer {
@@ -77,4 +81,8 @@ footer {
     width: 60%;
     margin-bottom: 10px;
   }
+}
+
+input {
+  background-color: $input-color;
 }
