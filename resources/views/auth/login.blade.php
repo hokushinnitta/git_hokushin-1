@@ -3,23 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>在庫管理システム - ログイン</title>
+    <title>ログイン</title>
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
-    <main>
-        <div class="container">
-            <h1>在庫管理システム</h1>
-            <form action="{{ route('login') }}" method="POST">
-                @csrf
-                <input type="text" name="name" placeholder="名前を入力" required>
-                <input type="password" name="password" placeholder="パスワードを入力" required>
-                <button type="submit">ログイン</button>
-            </form>
-        </div>
+    <div class="container">
+        <h2>ログイン</h2>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        <form method="POST" action="{{ route('login') }}">
+            @csrf
+            <div class="form-group">
+                <label for="name">名前</label>
+                <input type="text" name="name" id="name" class="form-control" value="{{ old('name') }}" required autofocus>
+            </div>
+            <div class="form-group">
+                <label for="password">パスワード</label>
+                <input type="password" name="password" id="password" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">ログイン</button>
+        </form>
         <div class="version">ver.0.01</div>
-    </main>
-    @component('components.footer', ['copyrightText' => 'Copyright © 2024 RunFree. All rights reserved.'])
-    @endcomponent
+    </div>
 </body>
 </html>

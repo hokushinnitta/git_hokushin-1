@@ -20,5 +20,12 @@ class ColorSetting extends Model
         'button_color',
         'button_text_color',
         'input_color',
+        'dark_header_color',
+        'dark_background_color',
+        'dark_font_color',
+        'dark_border_color',
+        'dark_button_color',
+        'dark_button_text_color',
+        'dark_input_color',
     ];
 }

@@ -16,6 +16,9 @@ $border-color: var(--border-color);
 $button-color: var(--button-color);
 $button-text-color: var(--button-text-color);
 $input-color: var(--input-color);
+$primary-color: #007bff;
+$hover-color: darken($primary-color, 10%);
+
 
   
   body {
@@ -40,3 +43,6 @@ $input-color: var(--input-color);
     border-color: var(--border-color);
   }
   
+// resources/sass/variables.scss
+
+
