@@ -1,78 +1,146 @@
-@import "node_modules/bootstrap/scss/bootstrap";  // Bootstrapのインポート
+// Bootstrapのインポート
+@import "node_modules/bootstrap/scss/bootstrap";
 
-// Base styles
+// カラー設定からの値を使用して変数を定義
+$header-color: #ffffff;
+$background-color: #ffffff; // デフォルトの背景色を白に設定
+$font-color: #000000; // デフォルトの文字色を黒に設定
+$border-color: #000000; // デフォルトの線の色を黒に設定
+$button-color: #000000;
+$button-text-color: #ffffff;
+$input-color: #ffffff;
+$dark-header-color: #000000;
+$dark-background-color: #000000;
+$dark-font-color: #ffffff;
+$dark-border-color: #ffffff;
+$dark-button-color: #ffffff;
+$dark-button-text-color: #000000;
+$dark-input-color: #000000;
+
+// CSS変数の定義
+:root {
+    --header-color: #{$header-color};
+    --background-color: #{$background-color};
+    --font-color: #{$font-color};
+    --border-color: #{$border-color};
+    --button-color: #{$button-color};
+    --button-text-color: #{$button-text-color};
+    --input-color: #{$input-color};
+}
+
+[data-theme="dark"] {
+    --header-color: #{$dark-header-color};
+    --background-color: #{$dark-background-color};
+    --font-color: #{$dark-font-color};
+    --border-color: #{$dark-border-color};
+    --button-color: #{$dark-button-color};
+    --button-text-color: #{$dark-button-text-color};
+    --input-color: #{$dark-input-color};
+}
+
+// 全体のスタイル
 body {
+    font-family: 'Arial, sans-serif';
+    color: var(--font-color);
+    background-color: var(--background-color);
+}
+
+// ヘッダーのスタイル
+.header {
+    background-color: var(--header-color);
+    color: var(--font-color);
+    border-bottom: 1px solid var(--border-color);
     display: flex;
-    flex-direction: column;  
-    justify-content: space-between;  
-    height: 100vh;
-    margin: 0;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;  // フォントファミリー
-    background-color: #f8f9fa;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
 }
 
-.container {
-    text-align: center;
-    flex-grow: 1;
+// ナビゲーションバーのスタイル
+.navbar {
+    display: flex;
+    gap: 1rem;
 }
 
-button {
-    // カスタムボタンスタイル
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+// ボタンのスタイル
+.btn {
+    background-color: var(--button-color);
+    color: var(--button-text-color);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 1rem;
+
+    &:hover {
+        filter: brightness(85%);
+    }
 }
 
-button:hover {
-    background-color: #0056b3;
+// フォームのスタイル
+.form-control {
+    background-color: var(--input-color);
+    color: var(--font-color);
+    border: 1px solid var(--border-color);
 }
 
-footer {
-    text-align: center;
-    margin-top: auto;
-    padding: 10px;
-    font-size: 0.8rem;
-    color: #555;
+// トグルボタンのスタイル
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
 }
 
-.version {
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+// その他の要素のスタイル
+.input {
+    background-color: var(--input-color);
+    color: var(--font-color);
+    border: 1px solid var(--border-color);
+}
+
+// コピーライトのスタイル
+.footer {
     position: fixed;
-    bottom: 10px;
-    right: 10px;
-    font-size: 0.8rem;
-    color: #555;
-}
-
-// Responsive styles
-@media (max-width: 767px) {
-    .container {
-        width: 90%;
-    }
-    input, button {
-        width: 100%;
-        margin-bottom: 10px;
-    }
-}
-
-@media (min-width: 768px) and (max-width: 1023px) {
-    .container {
-        width: 70%;
-    }
-    input, button {
-        width: 80%;
-        margin-bottom: 10px;
-    }
-}
-
-@media (min-width: 1024px) {
-    .container {
-        width: 50%;
-    }
-    input, button {
-        width: 60%;
-        margin-bottom: 10px;
-    }
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background-color: var(--header-color);
+    color: var(--font-color);
+    padding: 1rem;
 }

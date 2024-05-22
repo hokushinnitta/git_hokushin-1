@@ -1,5 +1,5 @@
-<footer class="footer bg-dark text-white text-center py-3">
-    <div class="container">
+<footer>
+    <div class="footer-content">
         {{ $copyrightText }}
     </div>
 </footer>

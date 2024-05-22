@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class SpecialMenuController extends Controller
 {
-    public function showSpecialMenu()
+    public function index()
     {
         return view('special_menu');
     }

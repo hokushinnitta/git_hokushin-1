@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- ホスト: localhost
--- 生成日時: 2024 年 5 月 21 日 07:53
+-- 生成日時: 2024 年 5 月 23 日 07:53
 -- サーバのバージョン： 10.4.28-MariaDB
 -- PHP のバージョン: 8.2.4
 
@@ -53,19 +53,33 @@ CREATE TABLE `cache_locks` (
 
 CREATE TABLE `color_settings` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `mode` varchar(255) NOT NULL,
-  `header_color` varchar(255) NOT NULL,
-  `background_color` varchar(255) NOT NULL,
-  `font_color` varchar(255) NOT NULL,
-  `font_type` varchar(255) NOT NULL,
-  `font_size` int(11) NOT NULL,
-  `border_color` varchar(255) NOT NULL,
-  `button_color` varchar(255) NOT NULL,
-  `button_text_color` varchar(255) NOT NULL,
-  `input_color` varchar(255) NOT NULL,
+  `mode` varchar(255) NOT NULL DEFAULT 'light',
+  `header_color` varchar(255) NOT NULL DEFAULT '#ffffff',
+  `background_color` varchar(255) NOT NULL DEFAULT '#000000',
+  `font_color` varchar(255) NOT NULL DEFAULT '#000000',
+  `font_type` varchar(255) NOT NULL DEFAULT 'Arial',
+  `font_size` int(11) NOT NULL DEFAULT 12,
+  `border_color` varchar(255) NOT NULL DEFAULT '#000000',
+  `button_color` varchar(255) NOT NULL DEFAULT '#000000',
+  `button_text_color` varchar(255) NOT NULL DEFAULT '#ffffff',
+  `input_color` varchar(255) NOT NULL DEFAULT '#000000',
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `dark_header_color` varchar(255) NOT NULL DEFAULT '#000000',
+  `dark_background_color` varchar(255) NOT NULL DEFAULT '#ffffff',
+  `dark_font_color` varchar(255) NOT NULL DEFAULT '#ffffff',
+  `dark_border_color` varchar(255) NOT NULL DEFAULT '#ffffff',
+  `dark_button_color` varchar(255) NOT NULL DEFAULT '#ffffff',
+  `dark_button_text_color` varchar(255) NOT NULL DEFAULT '#000000',
+  `dark_input_color` varchar(255) NOT NULL DEFAULT '#ffffff'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- テーブルのデータのダンプ `color_settings`
+--
+
+INSERT INTO `color_settings` (`id`, `mode`, `header_color`, `background_color`, `font_color`, `font_type`, `font_size`, `border_color`, `button_color`, `button_text_color`, `input_color`, `created_at`, `updated_at`, `dark_header_color`, `dark_background_color`, `dark_font_color`, `dark_border_color`, `dark_button_color`, `dark_button_text_color`, `dark_input_color`) VALUES
+(1, 'light', '#ee9b9b', '#f99f9f', '#e62828', 'Arial', 16, '#6f5858', '#a39ee5', '#d90d0d', '#6649b6', '2024-05-22 01:20:42', '2024-05-22 13:20:57', '#000000', '#c997c5', '#ffffff', '#ffffff', '#e76e6e', '#000000', '#ffffff');
 
 -- --------------------------------------------------------
 
@@ -137,7 +151,12 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (3, '2024_05_19_124504_create_color_settings_table', 1),
 (4, '2024_05_19_155351_create_sessions_table', 1),
 (5, '2024_05_19_155402_create_cache_table', 1),
-(6, '2024_05_20_221911_create_copyrights_table', 2);
+(6, '2024_05_20_221911_create_copyrights_table', 2),
+(7, '2024_05_21_223221_add_dark_mode_columns_to_color_settings_table', 3),
+(8, '2024_05_21_223528_add_default_mode_to_color_settings_table', 4),
+(9, '2024_05_21_223734_add_default_font_type_to_color_settings_table', 5),
+(10, '2024_05_21_224408_add_default_values_to_remaining_columns_in_color_settings_table', 6),
+(11, '2024_05_21_224634_add_default_font_size_to_color_settings_table', 7);
 
 -- --------------------------------------------------------
 
@@ -159,7 +178,8 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('2InXMhPus7z7XK2aSk7WvP4oPVTSnRE04vFq8ASy', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoibUw1MFoyZkl2amhIV1RLa3NFR0dsbTNTOXloem16Q1lHTnV6cUhETSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzE6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9tYWluLW1lbnUiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1716245420);
+('5ImFJciOb2GXfXBaWQR47VlyfntQ6TXurtjbIvUf', 2, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiYVZBaFNzRVNZQlVBMHdvdkdpMFhaZm1JV2t1YzRwNmNtQ1NEU3BJViI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzY6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9jb2xvci1zZXR0aW5ncyI7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjI7fQ==', 1716418384),
+('ZTkLU4S3xR7sxbSCYVa4NrbwLLR9nVdMGSvkFCTg', 2, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiWGlBVXJnbzJVNzhRZXdBeWlucWRWMG5BRFdBV3d2dXF4UGNnaE5JaSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzY6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9jb2xvci1zZXR0aW5ncyI7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjI7fQ==', 1716403965);
 
 -- --------------------------------------------------------
 
@@ -252,7 +272,7 @@ ALTER TABLE `users`
 -- テーブルの AUTO_INCREMENT `color_settings`
 --
 ALTER TABLE `color_settings`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- テーブルの AUTO_INCREMENT `copyrights`
@@ -270,7 +290,7 @@ ALTER TABLE `failed_jobs`
 -- テーブルの AUTO_INCREMENT `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- テーブルの AUTO_INCREMENT `users`
