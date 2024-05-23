@@ -28,42 +28,46 @@ document.addEventListener('DOMContentLoaded', function () {
     const saveButton = document.getElementById('saveButton');
     if (saveButton) {
         saveButton.addEventListener('click', function () {
-            const headerColor = document.getElementById('headerColor').value;
-            const backgroundColor = document.getElementById('backgroundColor').value;
-            const fontColor = document.getElementById('fontColor').value;
-            const borderColor = document.getElementById('borderColor').value;
-            const buttonColor = document.getElementById('buttonColor').value;
-            const buttonTextColor = document.getElementById('buttonTextColor').value;
-            const inputColor = document.getElementById('inputColor').value;
-            const darkHeaderColor = document.getElementById('darkHeaderColor').value;
-            const darkBackgroundColor = document.getElementById('darkBackgroundColor').value;
-            const darkFontColor = document.getElementById('darkFontColor').value;
-            const darkBorderColor = document.getElementById('darkBorderColor').value;
-            const darkButtonColor = document.getElementById('darkButtonColor').value;
-            const darkButtonTextColor = document.getElementById('darkButtonTextColor').value;
-            const darkInputColor = document.getElementById('darkInputColor').value;
-            
-            fetch('/api/color-settings', {
+            const primaryColor = document.getElementById('primary-color').value;
+            const secondaryColor = document.getElementById('secondary-color').value;
+            const successColor = document.getElementById('success-color').value;
+            const infoColor = document.getElementById('info-color').value;
+            const warningColor = document.getElementById('warning-color').value;
+            const dangerColor = document.getElementById('danger-color').value;
+            const lightColor = document.getElementById('light-color').value;
+            const darkColor = document.getElementById('dark-color').value;
+            const darkPrimaryColor = document.getElementById('dark-primary-color').value;
+            const darkSecondaryColor = document.getElementById('dark-secondary-color').value;
+            const darkSuccessColor = document.getElementById('dark-success-color').value;
+            const darkInfoColor = document.getElementById('dark-info-color').value;
+            const darkWarningColor = document.getElementById('dark-warning-color').value;
+            const darkDangerColor = document.getElementById('dark-danger-color').value;
+            const darkLightColor = document.getElementById('dark-light-color').value;
+            const darkDarkColor = document.getElementById('dark-dark-color').value;
+
+            fetch('/color-update', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
                 },
                 body: JSON.stringify({
-                    header_color: headerColor,
-                    background_color: backgroundColor,
-                    font_color: fontColor,
-                    border_color: borderColor,
-                    button_color: buttonColor,
-                    button_text_color: buttonTextColor,
-                    input_color: inputColor,
-                    dark_header_color: darkHeaderColor,
-                    dark_background_color: darkBackgroundColor,
-                    dark_font_color: darkFontColor,
-                    dark_border_color: darkBorderColor,
-                    dark_button_color: darkButtonColor,
-                    dark_button_text_color: darkButtonTextColor,
-                    dark_input_color: darkInputColor
+                    primary: primaryColor,
+                    secondary: secondaryColor,
+                    success: successColor,
+                    info: infoColor,
+                    warning: warningColor,
+                    danger: dangerColor,
+                    light: lightColor,
+                    dark: darkColor,
+                    dark_primary: darkPrimaryColor,
+                    dark_secondary: darkSecondaryColor,
+                    dark_success: darkSuccessColor,
+                    dark_info: darkInfoColor,
+                    dark_warning: darkWarningColor,
+                    dark_danger: darkDangerColor,
+                    dark_light: darkLightColor,
+                    dark_dark: darkDarkColor
                 })
             })
             .then(response => response.json())
@@ -73,6 +77,29 @@ document.addEventListener('DOMContentLoaded', function () {
                     location.reload();
                 } else {
                     alert('カラー設定の保存に失敗しました');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    }
+
+    const resetButton = document.getElementById('resetButton');
+    if (resetButton) {
+        resetButton.addEventListener('click', function () {
+            fetch('/color-settings/reset', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('設定がリセットされました');
+                    location.reload();
+                } else {
+                    alert('設定のリセットに失敗しました');
                 }
             })
             .catch(error => console.error('Error:', error));

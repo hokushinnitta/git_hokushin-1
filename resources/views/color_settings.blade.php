@@ -3,66 +3,78 @@
 @section('content')
 <div class="container">
     <h1>カラー設定</h1>
-    <form>
+    <form id="color-form" method="POST" action="{{ route('color.update') }}">
         @csrf
-        <div class="form-group">
-            <label for="headerColor">ヘッダーの色</label>
-            <input type="color" id="headerColor" name="header_color" value="{{ $settings->header_color ?? '#ffffff' }}" class="form-control">
+        <div class="mb-3">
+            <label for="primary-color" class="form-label">Primary Color</label>
+            <input type="color" class="form-control form-control-color" id="primary-color" name="primary" value="{{ $colors['primary'] ?? '#0d6efd' }}" title="Choose your color">
         </div>
-        <div class="form-group">
-            <label for="backgroundColor">背景の色</label>
-            <input type="color" id="backgroundColor" name="background_color" value="{{ $settings->background_color ?? '#ffffff' }}" class="form-control">
+        <div class="mb-3">
+            <label for="secondary-color" class="form-label">Secondary Color</label>
+            <input type="color" class="form-control form-control-color" id="secondary-color" name="secondary" value="{{ $colors['secondary'] ?? '#6c757d' }}" title="Choose your color">
         </div>
-        <div class="form-group">
-            <label for="fontColor">フォントの色</label>
-            <input type="color" id="fontColor" name="font_color" value="{{ $settings->font_color ?? '#000000' }}" class="form-control">
+        <div class="mb-3">
+            <label for="success-color" class="form-label">Success Color</label>
+            <input type="color" class="form-control form-control-color" id="success-color" name="success" value="{{ $colors['success'] ?? '#198754' }}" title="Choose your color">
         </div>
-        <div class="form-group">
-            <label for="borderColor">ボーダーの色</label>
-            <input type="color" id="borderColor" name="border_color" value="{{ $settings->border_color ?? '#000000' }}" class="form-control">
+        <div class="mb-3">
+            <label for="info-color" class="form-label">Info Color</label>
+            <input type="color" class="form-control form-control-color" id="info-color" name="info" value="{{ $colors['info'] ?? '#0dcaf0' }}" title="Choose your color">
         </div>
-        <div class="form-group">
-            <label for="buttonColor">ボタンの色</label>
-            <input type="color" id="buttonColor" name="button_color" value="{{ $settings->button_color ?? '#000000' }}" class="form-control">
+        <div class="mb-3">
+            <label for="warning-color" class="form-label">Warning Color</label>
+            <input type="color" class="form-control form-control-color" id="warning-color" name="warning" value="{{ $colors['warning'] ?? '#ffc107' }}" title="Choose your color">
         </div>
-        <div class="form-group">
-            <label for="buttonTextColor">ボタンテキストの色</label>
-            <input type="color" id="buttonTextColor" name="button_text_color" value="{{ $settings->button_text_color ?? '#ffffff' }}" class="form-control">
+        <div class="mb-3">
+            <label for="danger-color" class="form-label">Danger Color</label>
+            <input type="color" class="form-control form-control-color" id="danger-color" name="danger" value="{{ $colors['danger'] ?? '#dc3545' }}" title="Choose your color">
         </div>
-        <div class="form-group">
-            <label for="inputColor">入力欄の色</label>
-            <input type="color" id="inputColor" name="input_color" value="{{ $settings->input_color ?? '#ffffff' }}" class="form-control">
+        <div class="mb-3">
+            <label for="light-color" class="form-label">Light Color</label>
+            <input type="color" class="form-control form-control-color" id="light-color" name="light" value="{{ $colors['light'] ?? '#f8f9fa' }}" title="Choose your color">
         </div>
-        <div class="form-group">
-            <label for="darkHeaderColor">ダークモードヘッダーの色</label>
-            <input type="color" id="darkHeaderColor" name="dark_header_color" value="{{ $settings->dark_header_color ?? '#000000' }}" class="form-control">
+        <div class="mb-3">
+            <label for="dark-color" class="form-label">Dark Color</label>
+            <input type="color" class="form-control form-control-color" id="dark-color" name="dark" value="{{ $colors['dark'] ?? '#212529' }}" title="Choose your color">
         </div>
-        <div class="form-group">
-            <label for="darkBackgroundColor">ダークモード背景の色</label>
-            <input type="color" id="darkBackgroundColor" name="dark_background_color" value="{{ $settings->dark_background_color ?? '#000000' }}" class="form-control">
+        <!-- ダークモード用のカラーも同様に設定 -->
+        <div class="mb-3">
+            <label for="dark-primary-color" class="form-label">Dark Mode Primary Color</label>
+            <input type="color" class="form-control form-control-color" id="dark-primary-color" name="dark_primary" value="{{ $colors['dark_primary'] ?? '#375a7f' }}" title="Choose your color">
         </div>
-        <div class="form-group">
-            <label for="darkFontColor">ダークモードフォントの色</label>
-            <input type="color" id="darkFontColor" name="dark_font_color" value="{{ $settings->dark_font_color ?? '#ffffff' }}" class="form-control">
+        <div class="mb-3">
+            <label for="dark-secondary-color" class="form-label">Dark Mode Secondary Color</label>
+            <input type="color" class="form-control form-control-color" id="dark-secondary-color" name="dark_secondary" value="{{ $colors['dark_secondary'] ?? '#444444' }}" title="Choose your color">
         </div>
-        <div class="form-group">
-            <label for="darkBorderColor">ダークモードボーダーの色</label>
-            <input type="color" id="darkBorderColor" name="dark_border_color" value="{{ $settings->dark_border_color ?? '#ffffff' }}" class="form-control">
+        <div class="mb-3">
+            <label for="dark-success-color" class="form-label">Dark Mode Success Color</label>
+            <input type="color" class="form-control form-control-color" id="dark-success-color" name="dark_success" value="{{ $colors['dark_success'] ?? '#00bc8c' }}" title="Choose your color">
         </div>
-        <div class="form-group">
-            <label for="darkButtonColor">ダークモードボタンの色</label>
-            <input type="color" id="darkButtonColor" name="dark_button_color" value="{{ $settings->dark_button_color ?? '#ffffff' }}" class="form-control">
+        <div class="mb-3">
+            <label for="dark-info-color" class="form-label">Dark Mode Info Color</label>
+            <input type="color" class="form-control form-control-color" id="dark-info-color" name="dark_info" value="{{ $colors['dark_info'] ?? '#3498db' }}" title="Choose your color">
         </div>
-        <div class="form-group">
-            <label for="darkButtonTextColor">ダークモードボタンテキストの色</label>
-            <input type="color" id="darkButtonTextColor" name="dark_button_text_color" value="{{ $settings->dark_button_text_color ?? '#000000' }}" class="form-control">
+        <div class="mb-3">
+            <label for="dark-warning-color" class="form-label">Dark Mode Warning Color</label>
+            <input type="color" class="form-control form-control-color" id="dark-warning-color" name="dark_warning" value="{{ $colors['dark_warning'] ?? '#f39c12' }}" title="Choose your color">
         </div>
-        <div class="form-group">
-            <label for="darkInputColor">ダークモード入力欄の色</label>
-            <input type="color" id="darkInputColor" name="dark_input_color" value="{{ $settings->dark_input_color ?? '#000000' }}" class="form-control">
+        <div class="mb-3">
+            <label for="dark-danger-color" class="form-label">Dark Mode Danger Color</label>
+            <input type="color" class="form-control form-control-color" id="dark-danger-color" name="dark_danger" value="{{ $colors['dark_danger'] ?? '#e74c3c' }}" title="Choose
+            your color">
         </div>
-        <button type="button" id="saveButton" class="btn btn-primary">保存</button>
-        <button type="reset" class="btn btn-secondary">リセット</button>
+        <div class="mb-3">
+            <label for="dark-light-color" class="form-label">Dark Mode Light Color</label>
+            <input type="color" class="form-control form-control-color" id="dark-light-color" name="dark_light" value="{{ $colors['dark_light'] ?? '#2c3e50' }}" title="Choose your color">
+        </div>
+        <div class="mb-3">
+            <label for="dark-dark-color" class="form-label">Dark Mode Dark Color</label>
+            <input type="color" class="form-control form-control-color" id="dark-dark-color" name="dark_dark" value="{{ $colors['dark_dark'] ?? '#1a252f' }}" title="Choose your color">
+        </div>
+        <button type="submit" class="btn btn-primary" id="saveButton">保存</button>
+        <button type="button" class="btn btn-secondary" id="resetButton">リセット</button>
     </form>
+    <button type="button" class="btn btn-dark" id="darkModeToggle">ダークモード切替</button>
 </div>
 @endsection
+

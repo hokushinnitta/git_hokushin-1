@@ -1,0 +1,22 @@
+$theme-colors: (
+  "primary": #0d6efd,
+  "secondary": #6c757d,
+  "success": #198754,
+  "info": #0dcaf0,
+  "warning": #ffc107,
+  "danger": #dc3545,
+  "light": #f8f9fa,
+  "dark": #212529
+);
+
+// ダークモード用のカラー変数
+$dark-theme-colors: (
+  "primary": #375a7f,
+  "secondary": #444444,
+  "success": #00bc8c,
+  "info": #3498db,
+  "warning": #f39c12,
+  "danger": #e74c3c,
+  "light": #2c3e50,
+  "dark": #1a252f
+);

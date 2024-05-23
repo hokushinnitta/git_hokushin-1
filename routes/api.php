@@ -2,9 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Models\ColorSetting;
+use App\Http\Controllers\ColorSettingsController;
 
-Route::get('/color-settings', function () {
-    $settings = ColorSetting::first();
-    return response()->json($settings);
-});
+Route::post('/color-settings', [ColorSettingsController::class, 'storeSettings']);
+Route::post('/color-settings/reset', [ColorSettingsController::class, 'resetSettings']);
