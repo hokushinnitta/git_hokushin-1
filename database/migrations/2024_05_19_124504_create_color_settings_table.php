@@ -1,39 +1,28 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 class CreateColorSettingsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('color_settings', function (Blueprint $table) {
             $table->id();
-            $table->string('mode'); // 'normal' or 'dark'
-            $table->string('header_color');
-            $table->string('background_color');
-            $table->string('font_color');
-            $table->string('font_type');
-            $table->integer('font_size');
-            $table->string('border_color');
-            $table->string('button_color');
-            $table->string('button_text_color');
-            $table->string('input_color');
+            $table->string('background_color')->nullable();
+            $table->string('text_color')->nullable();
+            $table->string('header_color')->nullable();
+            $table->string('border_color')->nullable();
+            $table->string('button_background_color')->nullable();
+            $table->string('button_text_color')->nullable();
+            $table->string('button_hover_background_color')->nullable();
+            $table->string('button_hover_text_color')->nullable();
+            $table->string('footer_color')->nullable();
+            $table->string('textbox_color')->nullable();
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('color_settings');

@@ -1,36 +1,19 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ログイン</title>
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-</head>
-<body>
+@extends('layouts.app')
+
+@section('content')
     <div class="container">
-        <h2>ログイン</h2>
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+        <h2>Login</h2>
         <form method="POST" action="{{ route('login') }}">
             @csrf
             <div class="form-group">
-                <label for="name">名前</label>
-                <input type="text" name="name" id="name" class="form-control" value="{{ old('name') }}" required autofocus>
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" required autofocus>
             </div>
             <div class="form-group">
-                <label for="password">パスワード</label>
-                <input type="password" name="password" id="password" class="form-control" required>
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
             </div>
-            <button type="submit" class="btn btn-primary">ログイン</button>
+            <button type="submit" class="btn btn-primary">Login</button>
         </form>
-        <div class="version">ver.0.01</div>
     </div>
-</body>
-</html>
+@endsection

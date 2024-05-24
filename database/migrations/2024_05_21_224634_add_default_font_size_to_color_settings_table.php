@@ -1,32 +1,23 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 class AddDefaultFontSizeToColorSettingsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::table('color_settings', function (Blueprint $table) {
-            $table->integer('font_size')->default(12)->change(); // デフォルト値を 12 に設定
+            $table->integer('default_font_size')->nullable();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::table('color_settings', function (Blueprint $table) {
-            $table->integer('font_size')->default(null)->change(); // デフォルト値を解除
+            if (Schema::hasColumn('color_settings', 'default_font_size')) {
+                $table->dropColumn('default_font_size');
+            }
         });
     }
 }

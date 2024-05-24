@@ -1,13 +1,7 @@
-<?php
+@extends('layouts.app')
 
-namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-
-class SpecialMenuController extends Controller
-{
-    public function index()
-    {
-        return view('special_menu');
-    }
-}
+@section('content')
+    <div class="container">
+        <h1>スペシャルメニュー</h1>
+    </div>
+@endsection

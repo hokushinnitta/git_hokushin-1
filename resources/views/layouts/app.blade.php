@@ -1,15 +1,20 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ config('app.name', 'Laravel') }}</title>
-    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
-<body class="{{ session('dark_mode') ? 'dark-mode' : '' }}">
-    <div id="app">
+<body>
+    @include('components.header') <!-- ヘッダーの読み込み -->
+
+    <div class="container">
         @yield('content')
     </div>
-    <script src="{{ mix('js/app.js') }}" defer></script>
+
+    @include('components.footer') <!-- フッターの読み込み -->
+
+    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

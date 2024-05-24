@@ -1,48 +1,7 @@
-:root {
-  --header-color: #fff;
-  --background-color: #fff;
-  --font-color: #000;
-  --border-color: #ccc;
-  --button-color: #007bff;
-  --button-text-color: #fff;
-  --input-color: #fff;
-}
+// Body
+$body-bg: #f8fafc;
 
-$font-family: 'Arial, sans-serif'; // 必要なフォントファミリーを定義
-$background-color: var(--background-color); // 必要な背景色を定義
-$header-color: var(--header-color);
-$font-color: var(--font-color);
-$border-color: var(--border-color);
-$button-color: var(--button-color);
-$button-text-color: var(--button-text-color);
-$input-color: var(--input-color);
-$primary-color: #007bff;
-$hover-color: darken($primary-color, 10%);
-
-
-  
-  body {
-    background-color: var(--background-color);
-    color: var(--font-color);
-  }
-  
-  .header {
-    background-color: var(--header-color);
-  }
-  
-  button, .nav-btn, .logout-btn {
-    background-color: var(--button-color);
-    color: var(--button-text-color);
-  }
-  
-  input {
-    background-color: var(--input-color);
-  }
-  
-  .container {
-    border-color: var(--border-color);
-  }
-  
-// resources/sass/variables.scss
-
-
+// Typography
+$font-family-sans-serif: 'Nunito', sans-serif;
+$font-size-base: 0.9rem;
+$line-height-base: 1.6;

@@ -1,13 +1,7 @@
-<?php
+@extends('layouts.app')
 
-namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-
-class MainMenuController extends Controller
-{
-    public function index()
-    {
-        return view('main_menu');
-    }
-}
+@section('content')
+    <div class="container">
+        <h1>メインメニュー</h1>
+    </div>
+@endsection
